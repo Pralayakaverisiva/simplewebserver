@@ -22,67 +22,38 @@ Testing the webserver.
 
 ## PROGRAM:
 ```
+from http.server import HTTPServer, BaseHTTPRequestHandler
+
+content = """
 <!DOCTYPE html>
 <html>
 <head>
 <title>My webserver</title>
-<style>
-    body{
-
-        background-image:url('img.jpg');
-    }
-</style>
 </head>
 <body>
-<h1 align="center"><b>Top 5 Revenue Companies</b></h1><br>
-    <table align="center" border="15" cellpadding="15" cellspacing="3">
-        <tr>
-            <th>Company name</th>
-            <th>Location</th>
-            <th>Yearly turn over</th>
-        </tr>
-        <tr>
-            <td><ul>
-                <li>Infosis</li>
-                <br>
-                <li>HCL</li>
-                <br>
-                <li>Wipro</li>
-                <br>
-                <li>Redington India Ltd</li>
-                <br>
-                <li>Tech Mahindra Limited</li>
-            </ul></td>
-            <td>
-                <ul>
-                    <li>chennai</li>
-                    <br>
-                    <li>chennai</li>
-                    <br>
-                    <li>chennai</li>
-                    <br>
-                    <li>chennai</li>
-                    <br>
-                    <li>chennai</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>123162</li>
-                    <br>
-                    <li>12335402</li>
-                    <br>
-                    <li>41655262</li>
-                    <br>
-                    <li>4523122</li>
-                    <br>
-                    <li>74562162</li>
-                </ul>
-            </td>
-        </tr>
-    </table>
+<h1>Top Five Revenue Companies<h1>
+<ol>
+    <li>Apple</li>
+    <li>Walmart</li>
+    <li>procart</li>
+    <li>Amazon</li>
+    <li>Microsoft</li>
+</ol>
 </body>
 </html>
+"""
+
+class myhandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        print("request received")
+        self.send_response(200)
+        self.send_header('Content-type','text/html; charset=utf-8')
+        self.end_headers()
+        self.wfile.write(content.encode())
+server_address = ('',8000)
+httpd = HTTPServer(server_address,myhandler)
+print("my webserver is running...")
+httpd.serve_forever()
 
 ```
 
