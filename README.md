@@ -1,61 +1,96 @@
-# Ex01 Developing a Simple Webserver
+# EX01 Developing a Simple Webserver
+## Date: 31.10.2023
+
 ## AIM:
 To develop a simple webserver to serve html pages.
 
 ## DESIGN STEPS:
 ### Step 1: 
-HTML content creation
+HTML content creation.
 
 ### Step 2:
-Design of webserver workflow
+Design of webserver workflow.
 
 ### Step 3:
-Implementation using Python code
+Implementation using Python code.
 
 ### Step 4:
 Serving the HTML pages.
 
 ### Step 5:
-Testing the webserver
+Testing the webserver.
 
 ## PROGRAM:
-'''
-from http.server import HTTPServer,BaseHTTPRequestHandler
-
-content='''
-<!doctype html>
+```
+<!DOCTYPE html>
 <html>
 <head>
-<title> My Web Server</title>
+<title>My webserver</title>
+<style>
+    body{
+
+        background-image:url('img.jpg');
+    }
+</style>
 </head>
 <body>
-<h1>Top Five Web Application Development Frameworks</h1>
-<h2>1.Django</h2>
-<h2>2. MEAN Stack</h2>
-<h2>3. React </h2
-<h2>4. Ruby on Rails </h2>
-<h2>5. Spring </h2>
+<h1 align="center"><b>Top 5 Revenue Companies</b></h1><br>
+    <table align="center" border="15" cellpadding="15" cellspacing="3">
+        <tr>
+            <th>Company name</th>
+            <th>Location</th>
+            <th>Yearly turn over</th>
+        </tr>
+        <tr>
+            <td><ul>
+                <li>Infosis</li>
+                <br>
+                <li>HCL</li>
+                <br>
+                <li>Wipro</li>
+                <br>
+                <li>Redington India Ltd</li>
+                <br>
+                <li>Tech Mahindra Limited</li>
+            </ul></td>
+            <td>
+                <ul>
+                    <li>chennai</li>
+                    <br>
+                    <li>chennai</li>
+                    <br>
+                    <li>chennai</li>
+                    <br>
+                    <li>chennai</li>
+                    <br>
+                    <li>chennai</li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li>123162</li>
+                    <br>
+                    <li>12335402</li>
+                    <br>
+                    <li>41655262</li>
+                    <br>
+                    <li>4523122</li>
+                    <br>
+                    <li>74562162</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
 </body>
 </html>
-'''
 
-class MyServer(BaseHTTPRequestHandler):
-    def do_GET(self):
-        print("Get request received...")
-        self.send_response(200) 
-        self.send_header("content-type", "text/html")       
-        self.end_headers()
-        self.wfile.write(content.encode())
+```
 
-print("This is my webserver") 
-server_address =('',80)
-httpd = HTTPServer(server_address,MyServer)
-httpd.serve_forever()
-'''
+## Top Five Web Application Development Frameworks:
+![Alt text](image-1.png)
 
 ## OUTPUT:
-![output](/ex01.png)
-![output](/ex2.png)
+![Alt text](image.png)
 
 ## RESULT:
 The program for implementing simple webserver is executed successfully.
